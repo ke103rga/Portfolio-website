@@ -1,0 +1,82 @@
+{% extends 'portfolioApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ category.title }}</h2>
+<br>
+    <div class="row" >
+        <div class="col-md-4">
+            {% if category.photo %}
+                <img class="study-source-pic" style="border-radius: 8%; width: 300px; height: 160px;" src="{{category.photo.url}}">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <p>{{ category.description|linebreaks }}</p>
+        </div>
+    </div>
+</div>
+<br>
+<div>
+    <div class="container">
+        <p style="font-size:30px">Projects: </p>
+        <ul>
+            {% for project in category_projects %}
+            <li><a href="#{{project.slugname}}">{{project.title}}</a></li>
+            {% endfor %}
+        </ul>
+    <br>
+
+<div class="container" style="max-width: 970px">
+        <br>
+        {% for project in category_projects %}
+        <div class="card mb-3 " style="max-width: 800px" id="{{project.slugname}}">
+  <div class="row g-0">
+    <div class="col-md-4">
+        {% if project.photo %}
+            <img class="img-fluid rounded-start" src="{{project.photo.url}}" alt="" />
+        {% else %}
+          <img
+            src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+            alt="Trendy Pants and Shoes"
+            class="img-fluid rounded-start"
+          />
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">
+          {{ project.description|linebreaks|truncatewords:30 }}
+        </p>
+        <h6 class="card-title">Achieved goals:</h6>
+            <ul>
+                {% for goal in project.get_achieved_goals_lst %}
+                <li>{{goal}}</li>
+                {% endfor %}
+            </ul>
+        <h6 class="card-title">Used technologies:</h6>
+            <ul>
+                {% for tech in project.get_used_technologies_lst %}
+                <li>{{tech}}</li>
+                {% endfor %}
+            </ul>
+      </div>
+
+    </div>
+      <div class="card-footer w-100 text-muted">
+          <!--<div class="container pt-1">
+                  <a href="#!" class="btn btn-link" style="color:grey; font-size:1.7em; "><i class="bi bi-heart"></i></a>
+                  <a href="#!" class="btn btn-link" style="color:grey; font-size:1.7em; "><i class="bi bi-chat-text"></i></a>
+                  <a class="btn btn-link" href="{{ source.source }}"
+                                      style="margin-top: auto; text-align:right">Source &raquo;</a>
+          </div>-->
+          <p class="card-text"><a class="align-self-end btn btn-link " href="{{ source.source }}" style="margin-top: auto;">Source &raquo;</a></p>
+        </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}

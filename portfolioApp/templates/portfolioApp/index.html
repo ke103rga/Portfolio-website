@@ -1,0 +1,85 @@
+{% extends 'portfolioApp/base.html' %}
+{% load static %}
+
+{% block content%}
+<div class="container">
+    <div class="row" >
+        <div class="col-md-3">
+            <div id="profile-wrapper" class="card card-body">
+                <img id="profile-pic" src="{% static 'images/2GisLogoFile.png' %}">
+                <hr>
+                <h4>Razuev George</h4>
+                <p>Data analyst</p>
+                <p>Product analyst</p>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body">
+                <p>Hi, I'm Razuev George. For two years I have been engaged in programming and studying data
+                    science with sincere interest.</p>
+                <br>
+                <p>During this time, I studied mathematical statistics, data analysis, machine learning and deep learning.
+                    The training consisted primarily in creating projects and research based on the knowledge gained.</p>
+                <p>This site contains detailed descriptions and links to all the results of the work.
+                    The projects are divided into categories, which you can find below.</p>
+
+                <div>In addition,  all the resources involved in training are described in detail in the <a href="{% url 'studying' %}" >Studying</a> section,
+                    and the <a href="{% url 'resume' %}" >Resume</a> section contains a complete list of skills and provides access to my resumes on various resources.</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2>Projects categories</h2>
+    <br>
+
+    <div class="container">
+        <div class="card-group">
+            {% for category in categories %}
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem; height: 32rem;">
+                    <img class="card-img-top" src="{{ category.photo.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{category.title}}</h5>
+                        <p class="card-text">{{category.description|linebreaks|truncatewords:30}}</p>
+                        <p class="card-text"><a class="align-self-end btn btn-secondary " href="{{ category.get_absolute_url }}" style="margin-top: auto;">View projects &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+
+    <h2>Main projects</h2>
+    <br>
+
+    <div class="container" style="max-width: 770px">
+        {% for project in main_projects %}
+        <div class="card mb-3" style="max-width: 740px;">
+  <div class="row g-5">
+    <div class="col-md-4">
+      <img
+        src="{{project.photo.url}}"
+        alt="Trendy Pants and Shoes"
+        class="img-fluid rounded-start"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{project.title}}</h5>
+        <p class="card-text">{{project.description}}</p>
+        <p class="card-text">
+          <small class="text-muted"><a class="align-self-end btn btn-link " href="{{ project.get_absolute_url }}" style="margin-top: auto;">View details &raquo;</a></small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+    </div>
+</div>
+
+
+</div>
+{% endblock %}

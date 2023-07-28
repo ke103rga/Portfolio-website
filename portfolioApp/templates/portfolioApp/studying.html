@@ -1,0 +1,58 @@
+{% extends 'portfolioApp/base.html' %}
+{% load static %}
+
+{% block content%}
+<div class="container" style="max-width: 770px">
+
+    <h3>Disclaimer</h3>
+    <p>All of these courses provide sufficient comprehensive knowledge in their subject area.
+        However, the main way of learning is solving practical problems.</p>
+    <p>The knowledge gained during these courses was significantly expanded by the implementation of my own projects, including:
+    <ul>
+    <li>conducting statistical research</li>
+    <li>participating in  kaggle competitions</li>
+    <li>creating various services</li>
+</ul></p>
+    <p>You can find all the works on the main page.</p>
+    <br>
+
+    <h3>Educational resources</h3>
+    <p>All the resources are listed in the order of their passage</p>
+    {% for source in study_sources%}
+        <div class="card mb-3" style="max-width: 740px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+        {% if source.photo %}
+            <img class="img-fluid rounded-start" src="{{source.photo.url}}" alt="" />
+        {% else %}
+          <img
+            src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+            alt="Trendy Pants and Shoes"
+            class="img-fluid rounded-start"
+          />
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ source.title }}</h5>
+        <p class="card-text">
+          {{ source.description|linebreaks|truncatewords:30 }}
+        </p>
+        <h6 class="card-title">Acquired knowledge:</h6>
+            <ul>
+                {% for knowledge in source.get_knowledge_lst %}
+                <li>{{knowledge}}</li>
+                {% endfor %}
+            </ul>
+      </div>
+
+    </div>
+      <div class="card-footer w-100 text-muted">
+            <p class="card-text"><a class="align-self-end btn btn-link " href="{{ source.source }}" style="margin-top: auto;">Source &raquo;</a></p>
+        </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+          integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+
+    <link href = "{% static '/css/main.css' %}" type="text/css" rel="stylesheet">
+    <link href = "{% static '/css/headers.css' %}" type="text/css" rel="stylesheet">
+    <link href = "{% static '/css/podcast.css' %}" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          {% for elem in navigation_menu %}
+                {% if elem.page_title == selected_section %}
+                    <li><a href="{% url elem.url_name %}" class="nav-link px-2 text-secondary">{{ elem.page_title }}</a></li>
+                {% else %}
+                    <li><a href="{% url elem.url_name %}" class="nav-link px-2">{{ elem.page_title }}</a></li>
+                {% endif %}
+            {% endfor %}
+      </ul>
+
+      <div class="col-md-3 text-end">
+        <!-- telegram -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://t.me/GR174"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-telegram"></i
+      ></a>
+      <!-- Vk -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://vk.com/id229098000"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-vk"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://github.com/ke103rga"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-github"></i
+      ></a>
+      </div>
+    </header>
+  </div>
+
+{% block content %}
+{% endblock %}
+
+<footer class="text-center text-white" style="background-color: #f1f1f1;">
+  <!-- Grid container -->
+  <div class="container pt-4">
+      <!--<div class="row">
+          <p style="text-color: black;">email: razuevg174@mail.ru</p>
+      </div>
+      <div class="row">-->
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- telegram -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://t.me/GR174"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-telegram"></i
+      ></a>
+
+      <!-- Vk -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://vk.com/id229098000"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-vk"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="https://github.com/ke103rga"
+        role="button"
+        data-mdb-ripple-color="dark"
+        target="_blank"
+        rel="noopener"
+        ><i class="fab fa-github"></i
+      ></a>
+      <!-- Email -->
+      <!--<a
+        class="btn btn-link btn-floating btn-lg text-dark m-1"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fas fa-envelope me-3 "></i>
+      </a>-->
+
+    </section>
+    <!-- Section: Social media -->
+      </div>
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+</body>
+</html>

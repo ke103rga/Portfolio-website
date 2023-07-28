@@ -1,0 +1,80 @@
+{% extends 'portfolioApp/base.html' %}
+{% load static %}
+
+{% block content%}
+<div class="container">
+    <h2>Hard skills:</h2>
+    <div class="row">
+        <div class="col-md-2">
+            <ul>
+              <li class="list-group-item" style="font-size: 22px">Programming:</li>
+                <ul>
+                    <li>Python</li>
+                    <li>C#</li>
+                    <li>Django</li>
+                </ul>
+                <br>
+              <li class="list-group-item" style="font-size: 22px">SQL dialects:</li>
+                <ul>
+                    <li>MySQL</li>
+                    <li>PostgresSQL</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+              <li class="list-group-item" style="font-size: 22px">Data tools:</li>
+                <ul>
+                    <li>Pandas</li>
+                    <li>Numpy</li>
+                    <li>SciPy</li>
+                </ul>
+                <br>
+              <li class="list-group-item" style="font-size: 22px">Data visualization:</li>
+                <ul>
+                    <li>Matplotlib / Seaborn</li>
+                    <li>Plotly</li>
+                    <li>Tableau</li>
+                </ul>
+                <br>
+              <li class="list-group-item" style="font-size: 22px">Data mining:</li>
+                <ul>
+                    <li>BeautifulSoup</li>
+                    <li>Selenium</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+              <li class="list-group-item" style="font-size: 22px">Machine learning:</li>
+                <ul>
+                    <li>Scikit-Learn</li>
+                    <li>LightGBM / XGBoost</li>
+                    <li>CatBost</li>
+                </ul>
+                <br>
+              <li class="list-group-item" style="font-size: 22px">Deep learning:</li>
+                <ul>
+                    <li>PyTorch</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Math skills:</h2>
+    <ul>
+       <li>Mathematical statistics</li>
+        <li>Probability theory</li>
+        <li>A/B test</li>
+        <li>Product metrics</li>
+        <li>Unit economics</li>
+        <li>Machine learning algorithms understanding</li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Download resume:</h2>
+</div>
+{% endblock %}
